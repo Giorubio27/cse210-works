@@ -9,5 +9,5 @@ public class Job
         Console.WriteLine($"{_jobTitle} ({_jobCompany}) {_startDate}-{_endDate}");
 
     }
-    
+
 }

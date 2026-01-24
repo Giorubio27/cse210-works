@@ -54,6 +54,7 @@ public class Journal
             TimeSpan timeBetween = now - lastTime;
 
             Console.WriteLine($"It has been {timeBetween.Days} since you wrote your last entry");
+            Console.WriteLine();
         }
 
 

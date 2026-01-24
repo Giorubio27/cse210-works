@@ -32,10 +32,30 @@ public class Journal
     {
         string[] lines = System.IO.File.ReadAllLines(file);
 
-        foreach(string line in lines)
+        foreach (string line in lines)
         {
             string[] parts = line.Split("~");
 
         }
+    }
+    public void DisplayDateSinceLastEntry()
+    {
+        if (_entries.Count == 0)
+        {
+            Console.WriteLine("My man, its time to start your spiritual journey.");
+            Console.WriteLine();
+        }
+        else if(_entries.Count > 0)
+        {
+            Entry lastEntry = _entries[_entries.Count - 1];
+            DateTime lastTime = DateTime.Parse(lastEntry._date);
+            DateTime now = DateTime.Now;
+
+            TimeSpan timeBetween = now - lastTime;
+
+            Console.WriteLine($"It has been {timeBetween.Days} since you wrote your last entry");
+        }
+
+
     }
 }

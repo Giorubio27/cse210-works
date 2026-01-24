@@ -12,6 +12,7 @@ public class Entry
         Console.WriteLine($"The Date: {_date} {_promptText}");
         Console.WriteLine($"{_entryText}");
     }
+    
 
     
 }

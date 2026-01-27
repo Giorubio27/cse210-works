@@ -34,7 +34,14 @@ public class Journal
 
         foreach (string line in lines)
         {
-            string[] parts = line.Split("~");
+            string[] parts = line.Split("~~");
+
+            Entry newEntry = new Entry();
+            newEntry._date = parts[0];
+            newEntry._promptText = parts[1];
+            newEntry._entryText = parts[2];
+
+            _entries.Add(newEntry);
 
         }
     }

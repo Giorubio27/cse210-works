@@ -1,7 +1,7 @@
 using System;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-// I decided to add a days since feature to my code so that after putting in my entry I could see how many days its been since my last entry. I used the help
+// Extra MILE I decided to add a days since feature to my code so that after putting in my entry I could see how many days its been since my last entry. I used the help
 // of Gemini AI to learn about how to use Datetime to accomplish this task and find the difference.
 
 class Program

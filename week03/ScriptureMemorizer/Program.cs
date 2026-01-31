@@ -1,3 +1,5 @@
+// **** EXTRA CREDIT **** I did the original design and decided to add a feature to allow me to pick references and scriptures from a different file called repentref.csv and get scriptures from that instead. This will allow me to memorize key scriptures by topic which could potentially motivate me and others to study more efficiently. I used Gemini to help me figure out how to make it happen.
+
 using System;
 using System.Data;
 using System.Reflection.Metadata;

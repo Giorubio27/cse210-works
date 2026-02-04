@@ -14,6 +14,13 @@ public class Product
     }
     public string GetPackingLabel()
     {
-        return "";
+        return $"{_pname}: {_productid}\n";
+    }
+    public Product(string pname, string pid, double price, double quantity )
+    {
+        _pname = pname;
+        _productid = pid;
+        _price = price;
+        _quantity = quantity;
     }
 }

@@ -6,7 +6,7 @@ public class Comments
 
     public string GetDisplay()
     {
-        return $"{_name}: {_comment}";
+        return $"{_name}: '{_comment}'";
     }
     public Comments(string name, string comment)
     {

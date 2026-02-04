@@ -11,6 +11,7 @@ public class Customer
     public Customer(string customerName, Address address)
     {
         _custName = customerName;
+        _address = address.GetShipping();
         
     }
 }

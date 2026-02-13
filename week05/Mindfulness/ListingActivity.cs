@@ -6,6 +6,9 @@ public class ListingActivity : Activity
 
     private List<string> _prompts;
 
+    private List<string> _responses;
+    private string _file;
+
     public ListingActivity() : base("Listing Activity", "Help you list things to be grateful for", 60)
     {
         _prompts = new List<string>();
@@ -62,12 +65,24 @@ public class ListingActivity : Activity
             {
                 responsesCount++;
                 responseList.Add(response);
+                _responses = responseList;
             }
         }
         Console.WriteLine($"\nTime is up! You have listed{responsesCount} responses");
         return responseList;
 
 
+    }
+    public void SaveListToFile(string file)
+    {
+        using (StreamWriter outputFile = new StreamWriter(file))
+        {
+            foreach (string response in _responses)
+            {
+                outputFile.WriteLine($"{GetRandomPrompt()} {response}");
+            }
+
+        }
     }
 }
 

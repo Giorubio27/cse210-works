@@ -1,3 +1,5 @@
+// --Extra MILE--- I used Previous experience and AI as a tutor to help me integrate a save method into my Listing activity. I did it by 
+
 using System;
 
 class Program
@@ -43,6 +45,13 @@ class Program
                 list1.Run();
                 list1.DisplayEndingMessage();
                 list1.ShowSpinner(5);
+                Console.WriteLine("Would you like to save the activity on a file for memories? If so type a filename.");
+                string newFile = Console.ReadLine();
+                if (newFile != "no")
+                {
+                    list1.SaveListToFile(newFile);
+                }
+                
             }
             else if (userChoiceInput == 4)
             {

@@ -26,22 +26,30 @@ public class Activity
     {
         Console.WriteLine("Great Job. That was a good exercise! ");
     }
-    public void ShowSpinner()
+    public void ShowSpinner(int totalSeconds)
     {
-        Console.Write("|");
+        List<string> spinnerSymbols = new List<string> { "-", "\\", "|", "/" };
 
-        Thread.Sleep(500);
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = DateTime.Now.AddSeconds(totalSeconds);
 
-        Console.Write("\b \b");
-        Console.Write("/");
-        Thread.Sleep(500);
+        int i = 0;
 
-        Console.Write("\b \b");
-        Console.Write("-");
-        Thread.Sleep(500);
+        while (DateTime.Now < endTime)
+        {
+            string symbol = spinnerSymbols[i];
+            Console.Write(symbol);
+            Thread.Sleep(250);
+            Console.Write("\b \b");
+            
 
-        Console.Write("\b \b");
-        Console.Write("\\");
+            i++;
+            if (i >= spinnerSymbols.Count)
+            {
+                i = 0;
+            }
+        }
+        
 
     }
     public void ShowCountDown(int seconds)

@@ -19,17 +19,19 @@ public class ListingActivity : Activity
     }
     public void Run()
     {
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(_duration);
+        Console.WriteLine(GetRandomPrompt());
+        Console.WriteLine();
+        Console.WriteLine("Get Ready...");
+        ShowCountDown(3);
+        Console.WriteLine("\nGo!");
 
-        while (DateTime.Now < endTime)
-        {
-            GetRandomPrompt();
-            ShowSpinner();
-            GetListFromUser();
+        List<string> userInput = GetListFromUser(_duration);
 
-        }
+        _count = userInput.Count();
 
+        DisplayEndingMessage();
+
+        
     }
     public string GetRandomPrompt()
     {
@@ -40,18 +42,35 @@ public class ListingActivity : Activity
         return _prompts[randomChoice];
 
     }
-    public List<string> GetListFromUser()
+    public List<string> GetListFromUser(int _duration)
     {
-        
-        List<string> userList = new List<string>();
-        Console.WriteLine(GetRandomPrompt());
-        string response = Console.ReadLine();
-        userList.Add(response);
-        return userList;
-        
-        
+        List<string> responseList = new List<string>();
+
+        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+        int responsesCount = 0;
+
+        while (DateTime.Now < endTime)
+        {
+            Console.WriteLine("Enter: ");
+            string response = Console.ReadLine();
+
+            if (!string.IsNullOrEmpty(response))
+            {
+                responsesCount++;
+                responseList.Add(response);
+            }
+        }
+        Console.WriteLine($"Time is up! You have listed{responsesCount} responses");
+        return responseList;
+
+
     }
 }
+
+        
+        
+        
+   
     
         
 

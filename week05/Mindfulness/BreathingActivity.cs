@@ -18,7 +18,10 @@ public class BreathingActivity : Activity
 
         while (DateTime.Now < endTime)
         {
-            
+            Console.WriteLine("Breathe in...");
+            ShowCountDown(4);
+            Console.WriteLine("Breathe out");
+            ShowCountDown(6);
         }
         
     }

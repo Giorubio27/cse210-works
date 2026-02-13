@@ -29,11 +29,19 @@ public class ReflectingActivity : Activity
     }
     public void Run()
     {
+        Console.WriteLine($"--- {GetRandomPrompt()} ---");
+        Console.WriteLine("When you find something, press enter");
+        Console.ReadLine();
+
+
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(_duration);
 
         while (DateTime.Now < endTime)
         {
+            Console.WriteLine(GetRandomQuestion());
+
+            ShowSpinner(5);
 
         }
 

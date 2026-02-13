@@ -23,6 +23,8 @@ public class BreathingActivity : Activity
             Console.WriteLine("Breathe out");
             ShowCountDown(6);
         }
+        Console.WriteLine("Press enter to continue...");
+        Console.ReadLine();
         
     }
 }

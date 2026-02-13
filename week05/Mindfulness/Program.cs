@@ -10,7 +10,7 @@ class Program
 
         while (activityOn)
         {
-            Console.Clear();
+            
             Console.WriteLine("Hello friend, This is a program to help you be more mindful on your journey here on earth.");
             Console.WriteLine("Please choose out of one of the following activities.");
             Console.WriteLine("1. Breathing activity");
@@ -26,32 +26,33 @@ class Program
                 BreathingActivity breath1 = new BreathingActivity();
                 breath1.Run();
                 breath1.DisplayEndingMessage();
+                breath1.ShowSpinner(5);
             }
             else if (userChoiceInput == 2)
             {
                 ReflectingActivity ref1 = new ReflectingActivity();
-                ref1.DisplayStartingMessage();
                 ref1.Run();
                 ref1.DisplayEndingMessage();
+                ref1.ShowSpinner(5);
 
 
             }
             else if (userChoiceInput == 3)
             {
                 ListingActivity list1 = new ListingActivity();
-                list1.DisplayStartingMessage();
                 list1.Run();
                 list1.DisplayEndingMessage();
+                list1.ShowSpinner(5);
             }
             else if (userChoiceInput == 4)
             {
                 activityOn = false;
             }
         }
-        
 
-        
-        
-       
+
+
+
+
     }
 }

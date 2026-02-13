@@ -27,9 +27,13 @@ public class ListingActivity : Activity
 
         List<string> userInput = GetListFromUser(_duration);
 
-        _count = userInput.Count();
+        _count = userInput.Count;
 
-        DisplayEndingMessage();
+        Console.WriteLine($"You have listed {_count} reponses");
+        Console.WriteLine("Press enter to continue...");
+        Console.ReadLine();
+        
+        
 
         
     }
@@ -60,7 +64,7 @@ public class ListingActivity : Activity
                 responseList.Add(response);
             }
         }
-        Console.WriteLine($"Time is up! You have listed{responsesCount} responses");
+        Console.WriteLine($"\nTime is up! You have listed{responsesCount} responses");
         return responseList;
 
 

@@ -19,7 +19,7 @@ public class Activity
     }
     public void DisplayStartingMessage()
     {
-        Console.WriteLine($"Are you ready to start the {_name}? {_description}. This activity will last {_duration}");
+        Console.WriteLine($"Are you ready to start the {_name}? {_description}. This activity will last {_duration} seconds");
 
     }
     public void DisplayEndingMessage()
@@ -41,9 +41,10 @@ public class Activity
             Console.Write(symbol);
             Thread.Sleep(250);
             Console.Write("\b \b");
-            
+
 
             i++;
+            // Resets the count
             if (i >= spinnerSymbols.Count)
             {
                 i = 0;
@@ -52,6 +53,7 @@ public class Activity
         
 
     }
+// It counts down by seconds
     public void ShowCountDown(int seconds)
     {
         for (int i = seconds; i > 0; i--)
@@ -62,6 +64,6 @@ public class Activity
 
             Console.Write("\b \b");
         }
-        
+
     }
 }

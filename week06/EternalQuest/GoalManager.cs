@@ -130,7 +130,7 @@ public class GoalManager
         {
             foreach (Goal goal in _goals)
             {
-                outputFile.WriteLine(goal);
+                outputFile.WriteLine($"{goal}~");
             }
         }
 
@@ -140,8 +140,18 @@ public class GoalManager
         Console.WriteLine("What is the filename that you want to load? ");
         string loadFile = Console.ReadLine();
         string[] goals = System.IO.File.ReadAllLines(loadFile);
-        foreach(string goal in goals)
+        foreach (string goal in goals)
         {
+            string[] partsgoals = goal.Split(',');
+            string loadName = partsgoals[0];
+            string loadDesc = partsgoals[1];
+            string loadPoints = partsgoals[2];
+            
+            int loadPointsInt = int.Parse(loadPoints);
+
+            SimpleGoal loadedGoal = new SimpleGoal(loadName, loadDesc, loadPointsInt);
+            
+            
             
         }
         

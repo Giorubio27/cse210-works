@@ -143,13 +143,31 @@ public class GoalManager
         foreach (string goal in goals)
         {
             string[] partsgoals = goal.Split(',');
-            string loadName = partsgoals[0];
-            string loadDesc = partsgoals[1];
-            string loadPoints = partsgoals[2];
-
+            string loadGoal = partsgoals[0];
+            string loadName = partsgoals[1];
+            string loadDesc = partsgoals[2];
+            string loadPoints = partsgoals[3];
+            string loadTarget = partsgoals[4];
+            string loadBonus = partsgoals[6];
+            int loadBonusInt = int.Parse(loadBonus);
+            int loadTargetInt = int.Parse(loadTarget);
             int loadPointsInt = int.Parse(loadPoints);
-        // If i make the key or first index a type of Goal i think that could help me load the goals correctly is that a good method?
-            SimpleGoal loadedGoal = new SimpleGoal(loadName, loadDesc, loadPointsInt);
+            // If i make the key or first index a type of Goal i think that could help me load the goals correctly is that a good method?
+            if (loadGoal == "SimpleGoal")
+            {
+                SimpleGoal newSimpleGoal = new SimpleGoal(loadName, loadDesc, loadPointsInt);
+                _goals.Add(newSimpleGoal);
+            }
+            else if (loadGoal == "ChecklistGoal")
+            {
+                ChecklistGoal newChecklistGoal = new ChecklistGoal(loadName, loadDesc, loadPointsInt, loadTargetInt, loadBonusInt);
+                _goals.Add(newChecklistGoal);
+            }
+            else if (loadGoal == "EternalGoal")
+            {
+                EternalGoal newEternal = new EternalGoal(loadName, loadDesc, loadPointsInt);
+                _goals.Add(newEternal);
+            }
             
             
             

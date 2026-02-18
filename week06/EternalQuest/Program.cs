@@ -5,5 +5,10 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello World! This is the EternalQuest Project.");
+
+        GoalManager newgame = new GoalManager();
+        newgame.Start();
+        
+
     }
 }

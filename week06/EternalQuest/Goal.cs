@@ -1,12 +1,12 @@
 using System.ComponentModel;
 
-public class Goal
+public abstract class Goal
 {
-    private string _shortName;
+    protected string _shortName;
 
-    private string _description;
+    protected string _description;
 
-    private int _points;
+    protected int _points;
 
     public Goal(string name, string description, int points)
     {
@@ -15,20 +15,14 @@ public class Goal
         _points = points;
 
     }
-    public virtual void RecordEvent()
-    {
+    public abstract void RecordEvent();
 
-    }
-    public virtual bool IsComplete()
-    {
-        return false;
-    }
+    public abstract bool IsComplete();
+
     public virtual string GetDetailString()
     {
-        return $"{_shortName} {_description} {_points}";
+        return $"{_shortName}, {_description}, {_points}";
     }
-    public virtual string GetStringRepresentation()
-    {
-        return "";
-    }
+    public abstract string GetStringRepresentation();
 }
+    

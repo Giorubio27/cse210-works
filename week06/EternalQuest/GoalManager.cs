@@ -124,7 +124,19 @@ public class GoalManager
     }
     public void RecordEvent()
     {
+        Console.WriteLine("The goals are: ");
+        for (int i = 0; i < _goals.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_goals[i].GetDetailString()}");
+            Console.WriteLine("Which goal did you want to record? ");
+            int selectedGoal = int.Parse(Console.ReadLine());
 
+            _goals[selectedGoal].RecordEvent();
+
+            _score += _goals[selectedGoal].GetPoints();
+
+            Console.WriteLine($"Congrats! You now have {_score} points!");
+        }
     }
     public void SaveGoals(string file)
     {

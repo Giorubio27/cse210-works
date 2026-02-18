@@ -8,6 +8,7 @@ public class GoalManager
 
     public GoalManager()
     {
+        _goals = new List<Goal>();
 
     }
     public void Start()
@@ -128,6 +129,7 @@ public class GoalManager
         for (int i = 0; i < _goals.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {_goals[i].GetDetailString()}");
+        }
             Console.WriteLine("Which goal did you want to record? ");
             int selectedGoal = int.Parse(Console.ReadLine());
 
@@ -136,7 +138,7 @@ public class GoalManager
             _score += _goals[selectedGoal].GetPoints();
 
             Console.WriteLine($"Congrats! You now have {_score} points!");
-        }
+        
     }
     public void SaveGoals(string file)
     {

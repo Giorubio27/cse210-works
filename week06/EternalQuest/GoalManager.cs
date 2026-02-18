@@ -146,9 +146,9 @@ public class GoalManager
             string loadName = partsgoals[0];
             string loadDesc = partsgoals[1];
             string loadPoints = partsgoals[2];
-            
-            int loadPointsInt = int.Parse(loadPoints);
 
+            int loadPointsInt = int.Parse(loadPoints);
+        // If i make the key or first index a type of Goal i think that could help me load the goals correctly is that a good method?
             SimpleGoal loadedGoal = new SimpleGoal(loadName, loadDesc, loadPointsInt);
             
             

@@ -1,4 +1,4 @@
-public class ChecklistGoal
+public class ChecklistGoal : Goal
 {
     private int _amountCompleted;
 
@@ -6,23 +6,23 @@ public class ChecklistGoal
 
     private int _bonus;
 
-    public ChecklistGoal(string name, string description, int points)
+    public ChecklistGoal(string name, string description, int points) : base(name, description, points)
     {
 
     }
-    public void RecordEvent()
+    public override void RecordEvent()
     {
 
     }
-    public bool isComplete()
+    public override bool IsComplete()
     {
         return false;
     }
-    public string GetDetailString()
+    public override string GetDetailString()
     {
         return "";
     }
-    public string GetStringRepresentation()
+    public override string GetStringRepresentation()
     {
         return "";
     }

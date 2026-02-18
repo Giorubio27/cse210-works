@@ -1,20 +1,20 @@
-public class SimpleGoal
+public class SimpleGoal : Goal
 {
     private bool _isComplete;
 
-    public SimpleGoal(string name, string description, int points)
+    public SimpleGoal(string name, string description, int points) : base(name, description, points)
     {
 
     }
-    public void recordEvent()
+    public override void RecordEvent()
     {
 
     }
-    public bool isComplete()
+    public bool IsComplete()
     {
         return false;
     }
-    public string GetStringRepresentation()
+    public override string GetStringRepresentation()
     {
         return "";
     }

@@ -6,25 +6,28 @@ public class Goal
 
     private string _description;
 
-    private string _points;
+    private int _points;
 
     public Goal(string name, string description, int points)
     {
+        _shortName = name;
+        _description = description;
+        _points = points;
 
     }
-    public void RecordEvent()
+    public virtual void RecordEvent()
     {
 
     }
-    public bool isComplete()
+    public virtual bool IsComplete()
     {
-        return true;
+        return false;
     }
-    public string GetDetailString()
+    public virtual string GetDetailString()
     {
         return $"{_shortName} {_description} {_points}";
     }
-    public string GetStringRepresentation()
+    public virtual string GetStringRepresentation()
     {
         return "";
     }

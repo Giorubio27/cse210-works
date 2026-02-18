@@ -17,7 +17,7 @@ public class GoalManager
         choice = Console.ReadLine();
         while (choice != "quit")
         {
-           
+
             if (choice == "1")
             {
                 DisplayPlayerInfo();
@@ -51,6 +51,8 @@ public class GoalManager
             {
                 LoadGoals();
             }
+            Console.WriteLine("1. Display player info\n2. List goal names\n3. List goal details\n4. Record Events\n5 Create Goals\n6. Save Goals\n7. Load Goals");
+            choice = Console.ReadLine();
         }
 
     }
@@ -66,7 +68,7 @@ public class GoalManager
             string representation = goal.GetStringRepresentation();
 
             string[] parts = representation.Split(",");
-            string name = parts[0];
+            string name = parts[1];
             Console.WriteLine(name);
         }
 
@@ -93,7 +95,7 @@ public class GoalManager
         if (goalType == "1")
         {
             SimpleGoal simplegoal = new SimpleGoal(goalname, goalDescription, goalPointsInt);
-            _goals.Append(simplegoal);
+            _goals.Add(simplegoal);
 
         }
         else if (goalType == "2")
@@ -130,7 +132,7 @@ public class GoalManager
         {
             foreach (Goal goal in _goals)
             {
-                outputFile.WriteLine($"{goal}~");
+                outputFile.WriteLine($"{goal.GetStringRepresentation()}");
             }
         }
 
@@ -142,15 +144,16 @@ public class GoalManager
         string[] goals = System.IO.File.ReadAllLines(loadFile);
         foreach (string goal in goals)
         {
+
             string[] partsgoals = goal.Split(',');
+
             string loadGoal = partsgoals[0];
             string loadName = partsgoals[1];
             string loadDesc = partsgoals[2];
             string loadPoints = partsgoals[3];
             string loadTarget = partsgoals[4];
-            string loadBonus = partsgoals[6];
-            int loadBonusInt = int.Parse(loadBonus);
-            int loadTargetInt = int.Parse(loadTarget);
+            string loadBonus = partsgoals[5];
+            
             int loadPointsInt = int.Parse(loadPoints);
             // If i make the key or first index a type of Goal i think that could help me load the goals correctly is that a good method?
             if (loadGoal == "SimpleGoal")
@@ -160,6 +163,8 @@ public class GoalManager
             }
             else if (loadGoal == "ChecklistGoal")
             {
+                int loadBonusInt = int.Parse(loadBonus);
+                int loadTargetInt = int.Parse(loadTarget);
                 ChecklistGoal newChecklistGoal = new ChecklistGoal(loadName, loadDesc, loadPointsInt, loadTargetInt, loadBonusInt);
                 _goals.Add(newChecklistGoal);
             }

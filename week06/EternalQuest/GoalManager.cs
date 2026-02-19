@@ -19,7 +19,7 @@ public class GoalManager
         string name = Console.ReadLine();
         SetName(name);
         string choice = "";
-        Console.WriteLine("1. Display player info\n2. List goal names\n3. List goal details\n4. Record Events\n5 Create Goals\n6. Save Goals\n7. Load Goals");
+        Console.WriteLine("1. Display player info\n2. List goal names\n3. List goal details\n4. Record Events\n5 Create Goals\n6. Save Goals\n7. Load Goals\n8. Save to Leaderboard\n9. Display Leaderboard");
         choice = Console.ReadLine();
         while (choice != "quit")
         {
@@ -215,7 +215,7 @@ public class GoalManager
         {
             lines = File.ReadAllLines(filename).ToList();
 
-            lines.Add($"{SetName}: {_score}");
+            lines.Add($"{_name}: {_score}");
 
             var sortedLines = lines
             .Select(line => line.Split(":"))

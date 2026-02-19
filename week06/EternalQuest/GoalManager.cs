@@ -83,7 +83,7 @@ public class GoalManager
     }
     public void CreateGoal()
     {
-
+        
         Console.WriteLine("What is the name of the goal you want to create?");
         string goalname = Console.ReadLine();
         Console.WriteLine("What is the description for the goal?");
@@ -119,7 +119,7 @@ public class GoalManager
             Console.WriteLine("This will be a lifetime pursuit");
             EternalGoal eternalGoal = new EternalGoal(goalname, goalDescription, goalPointsInt);
             _goals.Add(eternalGoal);
-
+            
         }
 
     }
@@ -130,21 +130,20 @@ public class GoalManager
         {
             Console.WriteLine($"{i + 1}. {_goals[i].GetDetailString()}");
         }
-        Console.WriteLine("Which goal did you want to record? ");
-        int selectedGoal = int.Parse(Console.ReadLine()) - 1;
+            Console.WriteLine("Which goal did you want to record? ");
+            int selectedGoal = int.Parse(Console.ReadLine()) - 1;
 
-        _goals[selectedGoal].RecordEvent();
+            _goals[selectedGoal].RecordEvent();
 
-        _score += _goals[selectedGoal].GetPoints();
+            _score += _goals[selectedGoal].GetPoints();
 
-        Console.WriteLine($"Congrats! You now have {_score} points!");
-
+            Console.WriteLine($"Congrats! You now have {_score} points!");
+        
     }
     public void SaveGoals(string file)
     {
         using (StreamWriter outputFile = new StreamWriter(file))
         {
-            outputFile.WriteLine(_score);
             foreach (Goal goal in _goals)
             {
                 outputFile.WriteLine($"{goal.GetStringRepresentation()}");
@@ -157,34 +156,30 @@ public class GoalManager
         Console.WriteLine("What is the filename that you want to load? ");
         string loadFile = Console.ReadLine();
         string[] goals = System.IO.File.ReadAllLines(loadFile);
-
-        _score = int.Parse(goals[0]);
-        for (int i = 1; i < goals.Length; i++)
+        foreach (string goal in goals)
         {
-            string goal = goals[i];
+
             string[] partsgoals = goal.Split(',');
 
             string loadGoal = partsgoals[0];
             string loadName = partsgoals[1];
             string loadDesc = partsgoals[2];
             string loadPoints = partsgoals[3];
-            string loadTarget = partsgoals[4];
-            string loadBonus = partsgoals[5];
-            string loadAmount = partsgoals[6];
-
+            
+            
             int loadPointsInt = int.Parse(loadPoints);
             // If i make the key or first index a type of Goal i think that could help me load the goals correctly is that a good method?
             if (loadGoal == "SimpleGoal")
             {
-                bool isComplete = bool.Parse(partsgoals[4]);
                 SimpleGoal newSimpleGoal = new SimpleGoal(loadName, loadDesc, loadPointsInt);
                 _goals.Add(newSimpleGoal);
             }
             else if (loadGoal == "ChecklistGoal")
             {
+                string loadTarget = partsgoals[4];
+                string loadBonus = partsgoals[5];
                 int loadBonusInt = int.Parse(loadBonus);
                 int loadTargetInt = int.Parse(loadTarget);
-                int loadAmountInt = int.Parse(loadAmount);
                 ChecklistGoal newChecklistGoal = new ChecklistGoal(loadName, loadDesc, loadPointsInt, loadTargetInt, loadBonusInt);
                 _goals.Add(newChecklistGoal);
             }
@@ -193,10 +188,10 @@ public class GoalManager
                 EternalGoal newEternal = new EternalGoal(loadName, loadDesc, loadPointsInt);
                 _goals.Add(newEternal);
             }
-
-
-
+            
+            
+            
         }
-
+        
     }
 }

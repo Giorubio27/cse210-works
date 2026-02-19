@@ -17,7 +17,7 @@ public class BikingActivity : Activity
     }
     public override double GetDistance()
     {
-        return GetDistance();
+        return _distance;
     }
     public override double GetPace()
     {

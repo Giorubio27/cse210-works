@@ -27,7 +27,7 @@ public class Activity
     }
     public virtual double GetSpeed()
     {
-        _speed = GetDistance() / (_minutes / 60.0);
+        _speed = Math.Round(GetDistance() / (_minutes / 60.0),2);
         return _speed;
 
 
@@ -39,7 +39,7 @@ public class Activity
     }
     public virtual double GetPace()
     {
-        _pace = (double)(_minutes / 60.0) / (double)(GetDistance());
+        _pace = Math.Round((double)(_minutes / 60.0) / (double)(GetDistance()), 2);
         return _pace;
 
     }

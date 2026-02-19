@@ -1,7 +1,9 @@
 public class RunningActivity : Activity
 {
+    private double _distance;
     public RunningActivity(string date, int time, double distance) : base(date, time)
     {
+        _distance = distance;
 
     }
     public override string GetSummary()
@@ -14,7 +16,7 @@ public class RunningActivity : Activity
     }
     public override double GetDistance()
     {
-        return base.GetDistance();
+        return _distance;
     }
     public override double GetPace()
     {

@@ -10,6 +10,16 @@ class Program
         newBike.GetSpeed();
         newBike.GetPace();
         Console.WriteLine(newBike.GetSummary());
+
+        RunningActivity newRun = new RunningActivity("06/12/2026", 70, 5);
+        newRun.GetSpeed();
+        newRun.GetPace();
+        Console.WriteLine(newRun.GetSummary());
+
+        SwimmingActivity newSwim = new SwimmingActivity("07/2026", 100, 50);
+        newSwim.GetSpeed();
+        newSwim.GetPace();
+        Console.WriteLine(newSwim.GetSummary());
         
     }
 }

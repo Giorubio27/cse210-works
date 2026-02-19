@@ -123,6 +123,7 @@ public class GoalManager
 
 
 
+
             ChecklistGoal checkGoal = new ChecklistGoal(goalname, goalDescription, goalPointsInt, targetTimesInt, bonusInt);
             _goals.Add(checkGoal);
 
@@ -146,10 +147,11 @@ public class GoalManager
         Console.WriteLine("Which goal did you want to record? ");
         int selectedGoal = int.Parse(Console.ReadLine()) - 1;
 
-        _goals[selectedGoal].RecordEvent();
+        int pointsWon = _goals[selectedGoal].RecordEvent();
 
-        _score += _goals[selectedGoal].GetPoints();
+        _score += pointsWon;
 
+        Console.WriteLine($"Congrats! You gained {pointsWon}");
         Console.WriteLine($"Congrats! You now have {_score} points!");
 
     }
@@ -184,16 +186,18 @@ public class GoalManager
             // If i make the key or first index a type of Goal i think that could help me load the goals correctly is that a good method?
             if (loadGoal == "SimpleGoal")
             {
-                SimpleGoal newSimpleGoal = new SimpleGoal(loadName, loadDesc, loadPointsInt);
+                bool isComplete = bool.Parse(partsgoals[4]);
+                SimpleGoal newSimpleGoal = new SimpleGoal(loadName, loadDesc, loadPointsInt, isComplete);
                 _goals.Add(newSimpleGoal);
             }
             else if (loadGoal == "ChecklistGoal")
             {
                 string loadTarget = partsgoals[4];
                 string loadBonus = partsgoals[5];
+                int loadCurrent = int.Parse(partsgoals[6]);
                 int loadBonusInt = int.Parse(loadBonus);
                 int loadTargetInt = int.Parse(loadTarget);
-                ChecklistGoal newChecklistGoal = new ChecklistGoal(loadName, loadDesc, loadPointsInt, loadTargetInt, loadBonusInt);
+                ChecklistGoal newChecklistGoal = new ChecklistGoal(loadName, loadDesc, loadPointsInt, loadTargetInt, loadBonusInt, loadCurrent);
                 _goals.Add(newChecklistGoal);
             }
             else if (loadGoal == "EternalGoal")

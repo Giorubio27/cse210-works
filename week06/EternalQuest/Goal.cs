@@ -19,7 +19,7 @@ public abstract class Goal
     {
         return _points;
     }
-    public abstract void RecordEvent();
+    public abstract int RecordEvent();
 
     public abstract bool IsComplete();
 

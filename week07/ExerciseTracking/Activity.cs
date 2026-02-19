@@ -27,7 +27,7 @@ public class Activity
     }
     public virtual double GetSpeed()
     {
-        _speed = Math.Round(GetDistance() / (_minutes / 60.0),2);
+        _speed = Math.Round(GetDistance() / (_minutes / 60.0), 2);
         return _speed;
 
 

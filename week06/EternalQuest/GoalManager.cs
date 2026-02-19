@@ -6,6 +6,8 @@ public class GoalManager
 
     private int _score;
 
+    private string _name;
+
     public GoalManager()
     {
         _goals = new List<Goal>();
@@ -13,6 +15,9 @@ public class GoalManager
     }
     public void Start()
     {
+        Console.WriteLine("What is your name? ");
+        string name = Console.ReadLine();
+        SetName(name);
         string choice = "";
         Console.WriteLine("1. Display player info\n2. List goal names\n3. List goal details\n4. Record Events\n5 Create Goals\n6. Save Goals\n7. Load Goals");
         choice = Console.ReadLine();
@@ -52,6 +57,14 @@ public class GoalManager
             {
                 LoadGoals();
             }
+            else if (choice == "8")
+            {
+                SaveToLeaderBoard("leaderboard.txt");
+            }
+            else if (choice == "9")
+            {
+                DisplayLeaderBoard("leaderboard.txt");
+            }
             Console.WriteLine("1. Display player info\n2. List goal names\n3. List goal details\n4. Record Events\n5 Create Goals\n6. Save Goals\n7. Load Goals");
             choice = Console.ReadLine();
         }
@@ -83,7 +96,7 @@ public class GoalManager
     }
     public void CreateGoal()
     {
-        
+
         Console.WriteLine("What is the name of the goal you want to create?");
         string goalname = Console.ReadLine();
         Console.WriteLine("What is the description for the goal?");
@@ -119,7 +132,7 @@ public class GoalManager
             Console.WriteLine("This will be a lifetime pursuit");
             EternalGoal eternalGoal = new EternalGoal(goalname, goalDescription, goalPointsInt);
             _goals.Add(eternalGoal);
-            
+
         }
 
     }
@@ -130,15 +143,15 @@ public class GoalManager
         {
             Console.WriteLine($"{i + 1}. {_goals[i].GetDetailString()}");
         }
-            Console.WriteLine("Which goal did you want to record? ");
-            int selectedGoal = int.Parse(Console.ReadLine()) - 1;
+        Console.WriteLine("Which goal did you want to record? ");
+        int selectedGoal = int.Parse(Console.ReadLine()) - 1;
 
-            _goals[selectedGoal].RecordEvent();
+        _goals[selectedGoal].RecordEvent();
 
-            _score += _goals[selectedGoal].GetPoints();
+        _score += _goals[selectedGoal].GetPoints();
 
-            Console.WriteLine($"Congrats! You now have {_score} points!");
-        
+        Console.WriteLine($"Congrats! You now have {_score} points!");
+
     }
     public void SaveGoals(string file)
     {
@@ -165,8 +178,8 @@ public class GoalManager
             string loadName = partsgoals[1];
             string loadDesc = partsgoals[2];
             string loadPoints = partsgoals[3];
-            
-            
+
+
             int loadPointsInt = int.Parse(loadPoints);
             // If i make the key or first index a type of Goal i think that could help me load the goals correctly is that a good method?
             if (loadGoal == "SimpleGoal")
@@ -188,10 +201,49 @@ public class GoalManager
                 EternalGoal newEternal = new EternalGoal(loadName, loadDesc, loadPointsInt);
                 _goals.Add(newEternal);
             }
-            
-            
-            
+
+
+
         }
-        
+
+    }
+    public void SaveToLeaderBoard(string filename)
+    {
+
+        List<string> lines = new List<string>();
+        if (File.Exists(filename))
+        {
+            lines = File.ReadAllLines(filename).ToList();
+
+            lines.Add($"{SetName}: {_score}");
+
+            var sortedLines = lines
+            .Select(line => line.Split(":"))
+            .OrderByDescending(parts => int.Parse(parts[1]))
+            .Select(parts => $"{parts[0]}: {parts[1]}")
+            .ToList();
+
+            File.WriteAllLines(filename, sortedLines);
+        }
+
+    }
+    public void DisplayLeaderBoard(string filename)
+    {
+        if (!File.Exists(filename))
+        {
+            Console.WriteLine("No leaderboard data found.");
+            return;
+        }
+        Console.WriteLine("\n --- Top Rank ---");
+        string[] scores = File.ReadAllLines(filename);
+        foreach (string entry in scores)
+        {
+            Console.WriteLine(entry);
+        }
+
+    }
+    public void SetName(string name)
+    {
+        _name = name;
     }
 }

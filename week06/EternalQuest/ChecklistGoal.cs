@@ -30,7 +30,7 @@ public class ChecklistGoal : Goal
     public override string GetDetailString()
     {
         string status = IsComplete() ? "[X]" : "[ ]";
-        return $"{status} {_shortName}";
+        return $"{status} {_shortName}({_description}) -- Completed {_amountCompleted}/{_target} times";
     }
     public override string GetStringRepresentation()
     {

@@ -1,1 +1,4 @@
-EternalGoal, scriptures, Read them daily, 100
+EternalGoal, Read the scriptures, I need to read the scriptures daily, 5
+SimpleGoal, Workout, I need to work out 5 days a week for a month straight, 100, False
+EternalGoal,  Read the scriptures,  I need to read the scriptures daily, 5
+SimpleGoal,  Workout,  I need to work out 5 days a week for a month straight, 100, False

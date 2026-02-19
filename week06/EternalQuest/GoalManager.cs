@@ -131,7 +131,7 @@ public class GoalManager
             Console.WriteLine($"{i + 1}. {_goals[i].GetDetailString()}");
         }
             Console.WriteLine("Which goal did you want to record? ");
-            int selectedGoal = int.Parse(Console.ReadLine());
+            int selectedGoal = int.Parse(Console.ReadLine()) - 1;
 
             _goals[selectedGoal].RecordEvent();
 
@@ -144,6 +144,7 @@ public class GoalManager
     {
         using (StreamWriter outputFile = new StreamWriter(file))
         {
+            outputFile.WriteLine(_score);
             foreach (Goal goal in _goals)
             {
                 outputFile.WriteLine($"{goal.GetStringRepresentation()}");
@@ -156,9 +157,11 @@ public class GoalManager
         Console.WriteLine("What is the filename that you want to load? ");
         string loadFile = Console.ReadLine();
         string[] goals = System.IO.File.ReadAllLines(loadFile);
-        foreach (string goal in goals)
-        {
 
+        _score = int.Parse(goals[0]);
+        for (int i = 1; i < goals.Length; i++)
+        {
+            string goal = goals[i];
             string[] partsgoals = goal.Split(',');
 
             string loadGoal = partsgoals[0];
@@ -167,11 +170,13 @@ public class GoalManager
             string loadPoints = partsgoals[3];
             string loadTarget = partsgoals[4];
             string loadBonus = partsgoals[5];
+            string loadAmount = partsgoals[6];
             
             int loadPointsInt = int.Parse(loadPoints);
             // If i make the key or first index a type of Goal i think that could help me load the goals correctly is that a good method?
             if (loadGoal == "SimpleGoal")
             {
+                bool isComplete = bool.Parse(partsgoals[4]);
                 SimpleGoal newSimpleGoal = new SimpleGoal(loadName, loadDesc, loadPointsInt);
                 _goals.Add(newSimpleGoal);
             }
@@ -179,6 +184,7 @@ public class GoalManager
             {
                 int loadBonusInt = int.Parse(loadBonus);
                 int loadTargetInt = int.Parse(loadTarget);
+                int loadAmountInt = int.Parse(loadAmount);
                 ChecklistGoal newChecklistGoal = new ChecklistGoal(loadName, loadDesc, loadPointsInt, loadTargetInt, loadBonusInt);
                 _goals.Add(newChecklistGoal);
             }

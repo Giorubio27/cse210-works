@@ -83,7 +83,7 @@ public class GoalManager
     }
     public void CreateGoal()
     {
-        
+
         Console.WriteLine("What is the name of the goal you want to create?");
         string goalname = Console.ReadLine();
         Console.WriteLine("What is the description for the goal?");
@@ -119,7 +119,7 @@ public class GoalManager
             Console.WriteLine("This will be a lifetime pursuit");
             EternalGoal eternalGoal = new EternalGoal(goalname, goalDescription, goalPointsInt);
             _goals.Add(eternalGoal);
-            
+
         }
 
     }
@@ -130,15 +130,15 @@ public class GoalManager
         {
             Console.WriteLine($"{i + 1}. {_goals[i].GetDetailString()}");
         }
-            Console.WriteLine("Which goal did you want to record? ");
-            int selectedGoal = int.Parse(Console.ReadLine()) - 1;
+        Console.WriteLine("Which goal did you want to record? ");
+        int selectedGoal = int.Parse(Console.ReadLine()) - 1;
 
-            _goals[selectedGoal].RecordEvent();
+        _goals[selectedGoal].RecordEvent();
 
-            _score += _goals[selectedGoal].GetPoints();
+        _score += _goals[selectedGoal].GetPoints();
 
-            Console.WriteLine($"Congrats! You now have {_score} points!");
-        
+        Console.WriteLine($"Congrats! You now have {_score} points!");
+
     }
     public void SaveGoals(string file)
     {
@@ -171,7 +171,7 @@ public class GoalManager
             string loadTarget = partsgoals[4];
             string loadBonus = partsgoals[5];
             string loadAmount = partsgoals[6];
-            
+
             int loadPointsInt = int.Parse(loadPoints);
             // If i make the key or first index a type of Goal i think that could help me load the goals correctly is that a good method?
             if (loadGoal == "SimpleGoal")
@@ -193,10 +193,10 @@ public class GoalManager
                 EternalGoal newEternal = new EternalGoal(loadName, loadDesc, loadPointsInt);
                 _goals.Add(newEternal);
             }
-            
-            
-            
+
+
+
         }
-        
+
     }
 }

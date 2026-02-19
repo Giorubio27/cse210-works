@@ -65,7 +65,7 @@ public class GoalManager
             {
                 DisplayLeaderBoard("leaderboard.txt");
             }
-            Console.WriteLine("1. Display player info\n2. List goal names\n3. List goal details\n4. Record Events\n5 Create Goals\n6. Save Goals\n7. Load Goals");
+            Console.WriteLine("1. Display player info\n2. List goal names\n3. List goal details\n4. Record Events\n5 Create Goals\n6. Save Goals\n7. Load Goals\n8. Save to Leaderboard\n9.Display Leaderboard");
             choice = Console.ReadLine();
         }
 

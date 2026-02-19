@@ -219,8 +219,9 @@ public class GoalManager
 
             var sortedLines = lines
             .Select(line => line.Split(":"))
-            .OrderByDescending(parts => int.Parse(parts[1]))
-            .Select(parts => $"{parts[0]}: {parts[1]}")
+            .Where(parts => parts.Length == 2)
+            .OrderByDescending(parts => int.Parse(parts[1].Trim()))
+            .Select(parts => $"{parts[0].Trim()}: {parts[1].Trim()}")
             .ToList();
 
             File.WriteAllLines(filename, sortedLines);
